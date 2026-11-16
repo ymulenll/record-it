@@ -39,7 +39,7 @@ final class TeleprompterLauncher: ObservableObject {
             fileExists: { FileManager.default.fileExists(atPath: $0) },
             homeDirectory: FileManager.default.homeDirectoryForCurrentUser
         ) else {
-            return "Telemprompit isn't installed. Run setup_mac.sh in mikerosoft-tools/telemprompit to stage it in ~/Applications."
+            return "Telemprompit isn't installed. Optionally install Telemprompit in ~/Applications to use this shortcut."
         }
 
         let configuration = NSWorkspace.OpenConfiguration()

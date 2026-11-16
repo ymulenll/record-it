@@ -97,7 +97,7 @@ func windowCapturePixelSize(
 
 func preferredDisplay(
     in displays: [CaptureDisplay],
-    preferredName: String = "PA27JCV"
+    preferredName: String = "DELL U2723QE"
 ) -> CaptureDisplay? {
     displays.first {
         $0.name.compare(preferredName, options: [.caseInsensitive, .diacriticInsensitive]) == .orderedSame
@@ -164,7 +164,7 @@ struct CaptureAudioDevice: Identifiable, Hashable {
 
 func preferredAudioDevice(
     in devices: [CaptureAudioDevice],
-    preferredName: String = "Yeti"
+    preferredName: String = "Elgato Wave XLR"
 ) -> CaptureAudioDevice? {
     devices.first {
         $0.name.range(of: preferredName, options: [.caseInsensitive, .diacriticInsensitive]) != nil

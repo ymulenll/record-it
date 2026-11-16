@@ -50,12 +50,12 @@ final class RecordingViewModelTests: XCTestCase {
         XCTAssertEqual(model.mode, .camera)
     }
 
-    func testDefaultProjectsRootUsesTheConvexVideosDirectory() {
-        let homeDirectory = URL(fileURLWithPath: "/Users/m5-mike", isDirectory: true)
+    func testDefaultProjectsRootUsesContentCreationRecordings() {
+        let homeDirectory = URL(fileURLWithPath: "/Users/example", isDirectory: true)
 
         XCTAssertEqual(
             defaultProjectsRoot(homeDirectory: homeDirectory),
-            URL(fileURLWithPath: "/Users/m5-mike/dev/convex/convex-videos", isDirectory: true)
+            URL(fileURLWithPath: "/Users/example/Developer/content-creation/recordings", isDirectory: true)
         )
     }
 
@@ -65,6 +65,7 @@ final class RecordingViewModelTests: XCTestCase {
             CaptureDisplay(id: 2, name: "PA27JCV", width: 3200, height: 1800)
         ]
         let model = RecordingViewModel(displayProvider: { connectedDisplays })
+        model.selectedDisplayID = 2
 
         model.refreshDisplaysAfterSystemChange()
         XCTAssertEqual(model.selectedDisplayID, 2)

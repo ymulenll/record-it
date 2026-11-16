@@ -77,8 +77,7 @@ final class RecordingPreferences: ObservableObject {
 
     /// How far the camera's picture runs behind its microphone. Camera
     /// recordings place each frame this much earlier, so lips match the
-    /// voice. A clap test measured 75 ms on the Razer Kiyo Pro Ultra with
-    /// the Yeti, hence the 80 ms default.
+    /// voice. Default to no correction until calibrated for this setup.
     @Published var cameraDelayMilliseconds: Int {
         didSet {
             let clampedValue = min(500, max(0, cameraDelayMilliseconds))
@@ -108,7 +107,7 @@ final class RecordingPreferences: ObservableObject {
         screenQuality = defaults.string(forKey: Key.screenQuality)
             .flatMap(ScreenQuality.init(rawValue:)) ?? .editMaster
         cameraDelayMilliseconds = defaults.object(forKey: Key.cameraDelayMilliseconds) == nil
-            ? 80
+            ? 0
             : min(500, max(0, defaults.integer(forKey: Key.cameraDelayMilliseconds)))
         showsCameraPreview = defaults.object(forKey: Key.showsCameraPreview) == nil
             ? true

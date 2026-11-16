@@ -57,7 +57,7 @@ later rebuilds keep the grant.
 
 ### Key behaviour
 
-- `PA27JCV` is the preferred display, falling back to the first available display.
+- `DELL U2723QE` is the preferred display, falling back to the first available display.
   These are personal defaults, not requirements for other users.
 - Screen output always preserves the selected display's active framebuffer.
   Record It does not change display modes or upscale screen recordings.
@@ -72,8 +72,7 @@ later rebuilds keep the grant.
   each active source. Both screen and camera pipelines warn after three seconds
   without activity and raise problems after ten seconds or 60 rejected video samples.
   Static screens are not stalls; the user chooses whether to keep recording or stop.
-- The first 4K/30-capable camera is selected by default. On this machine that is
-  `Razer Kiyo Pro Ultra`.
+- The first 4K/30-capable camera is selected by default. Choose between the connected iPhone and MacBook cameras in the app.
 - In Camera and Both modes the selected camera shows uncropped at 16:9 to the
   right of the settings, inside the main window (not a separate window). It
   comes up by itself and captures no audio and writes no file. Changing camera
@@ -87,16 +86,9 @@ later rebuilds keep the grant.
 - Screen audio defaults to ScreenCaptureKit system playback and can be disabled.
   It does not use a microphone.
 - Camera audio is independently selectable and defaults to the first microphone
-  whose name contains `Yeti`.
-- The webcam's picture runs behind its microphone (a clap test measured 75 ms
-  on the Kiyo with the Yeti). **Camera delay** in Settings (default 80 ms, 0 to
-  turn it off) places each camera frame that much earlier as `MovieWriter`
-  writes it, so the file is in sync for every app. The file is tagged with
-  `com.mikerosoft.record-it.camera-delay` (QuickTime metadata, seconds) so
-  Tandem doesn't take the delay out a second time. Checked on 2026-10-08:
-  with 80 ms, four claps' hands met 5 to 52 ms after their sound (28 ms on
-  average, within the Kiyo's frame timing), Mike saw them in sync, and
-  Tandem showed "In sync as recorded".
+  whose name contains `Elgato Wave XLR`.
+- Camera delay defaults to 0 ms until calibrated for the selected camera and microphone.
+  Preserve the `com.mikerosoft.record-it.camera-delay` metadata key for compatibility.
 - The encoder menu lists only available VideoToolbox H.264 and HEVC hardware
   encoders. CBR, CQP, and VBR controls are capability-filtered and persist in
   `UserDefaults` between launches.
@@ -108,7 +100,7 @@ later rebuilds keep the grant.
 - Camera and audio-only takes require a distinct built-in recovery microphone.
   The independently signed helper writes recovery audio under
   `~/Library/Application Support/Record It/Recovery Audio/`.
-- Projects come from `~/dev/convex/convex-videos`, newest creation date first.
+- Projects come from `~/Developer/content-creation/recordings`, newest creation date first.
 - **New…** beside the Project picker creates a named project and its `source`
   folder under that root, then selects it. Existing names and invalid or hidden
   folder names are rejected without changing the selected project.

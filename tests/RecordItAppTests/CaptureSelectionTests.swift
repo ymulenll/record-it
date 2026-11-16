@@ -13,10 +13,10 @@ final class CaptureSelectionTests: XCTestCase {
         XCTAssertEqual(configurationSteps, ["input", "format"])
     }
 
-    func testPreferredDisplayDefaultsToPA27JCVWhenAvailable() {
+    func testPreferredDisplayDefaultsToDellWhenAvailable() {
         let displays = [
             CaptureDisplay(id: 1, name: "LG Monitor", width: 5120, height: 2880),
-            CaptureDisplay(id: 2, name: "PA27JCV", width: 3200, height: 1800)
+            CaptureDisplay(id: 2, name: "DELL U2723QE", width: 3200, height: 1800)
         ]
 
         XCTAssertEqual(preferredDisplay(in: displays)?.id, 2)
@@ -104,13 +104,13 @@ final class CaptureSelectionTests: XCTestCase {
         XCTAssertEqual(preferredCamera(in: cameras)?.id, "razer")
     }
 
-    func testPreferredCameraAudioInputDefaultsToYeti() {
+    func testPreferredCameraAudioInputDefaultsToWaveXLR() {
         let inputs = [
             CaptureAudioDevice(id: "mac", name: "MacBook Pro Microphone"),
-            CaptureAudioDevice(id: "yeti", name: "Yeti Stereo Microphone")
+            CaptureAudioDevice(id: "wave", name: "Elgato Wave XLR")
         ]
 
-        XCTAssertEqual(preferredAudioDevice(in: inputs)?.id, "yeti")
+        XCTAssertEqual(preferredAudioDevice(in: inputs)?.id, "wave")
     }
 
     @MainActor

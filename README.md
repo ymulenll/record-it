@@ -10,13 +10,20 @@ macOS
 
 ## What it is
 
-This is the recorder I use for my videos. It can record the screen, the camera,
+This is Yoelvis’s fork of Mike Cann’s screen and camera recorder. It can record the screen, the camera,
 both, or just audio, and when you do both you get a separate file for each so
 nothing gets squished into one canvas.
 
 While it's recording, it shows a live dashboard of what's actually being written
 to disk, and it shouts at me if something stalls or the mic goes quiet. It also
 writes movies in small fragments, so a crash still leaves a file that plays.
+
+## Local setup
+
+Clone: `~/Developer/content-creation/record-it`. Projects: `~/Developer/content-creation/recordings`.
+Preferred devices: Dell U2723QE and Elgato Wave XLR, with the built-in MacBook Pro microphone for recovery audio.
+Camera delay starts at 0 ms; calibrate it with a clap test before an important take.
+Telemprompit is an optional separate app. The original bundle ID and metadata keys are preserved for compatibility.
 
 ## Get it
 
@@ -36,7 +43,7 @@ Video recording needs a hardware H.264 or HEVC encoder. Camera and audio-only
 takes also need a separate built-in microphone for the recovery recording.
 
 ```bash
-git clone https://github.com/mikecann/record-it.git
+git clone https://github.com/ymulenll/record-it.git
 cd record-it
 bash setup_mac.sh
 bash install.sh
@@ -59,8 +66,8 @@ output project, then start recording. For screen capture you can choose a whole
 display or one window. Stop the take to finalize the files and reveal them in
 Finder. The camera shows beside the settings so you can check framing before a take.
 
-I have a few defaults for my setup: projects under `~/dev/convex/convex-videos`,
-a `PA27JCV` display and a `Yeti` microphone. Choose your own devices in the app;
+This fork uses Yoelvis’s setup: projects under `~/Developer/content-creation/recordings`,
+a `DELL U2723QE` display and a `Elgato Wave XLR` microphone. Choose your own devices in the app;
 to change the project directory, edit `defaultProjectsRoot` in
 `Sources/RecordItApp/RecordingViewModel.swift`. If that folder doesn't exist,
 **No Project** saves to `~/Movies/record-it-output`.
@@ -82,14 +89,14 @@ You can also use `record-it restart`, `record-it stop`, or `record-it setup`.
   HEVC encoder
 - A display or individual window. Displays preserve their active framebuffer
   resolution without upscaling; windows capture at the display's pixel scale
-- My preferred display is `PA27JCV`, falling back to the first available display
+- The preferred display is `DELL U2723QE`, falling back to the first available display
 - The selected camera's best format at 30 fps, preferring native 3840 × 2160
 - An uncropped live camera preview shows beside the settings in Camera and Both
   modes, without recording audio or creating a file. Starting a recording puts
   it away and it comes back after the take. **Hide Preview** turns it off
 - Selectable screen audio: **System Sound** or **None**. System Sound captures
   playback from music, browsers, videos, and other Mac apps, not a microphone
-- Selectable camera microphone, defaulting to the first input with `Yeti` in its
+- Selectable camera microphone, defaulting to the first input with `Elgato Wave XLR` in its
   name. Camera and audio-only recordings require a primary microphone and a
   separate built-in recovery microphone
 - Audio-only mode records AAC in an `audio.m4a` file, preserving the input's
@@ -97,8 +104,7 @@ You can also use `record-it restart`, `record-it stop`, or `record-it setup`.
   128 kbps. It does not require a display, camera, or video encoder
 - Separate `screen.mov` and `camera.mov` files when recording both, preserving each source's full resolution
 - Lip sync: a webcam's picture runs behind its microphone, so **Camera delay**
-  in Settings (default 80 ms, measured with a clap test on a Razer Kiyo Pro
-  Ultra and a Yeti) places each camera frame that much earlier. Set it to 0 to
+  in Settings (default 0 ms; calibrate with a clap test for your camera and microphone) places each camera frame that much earlier. Set it to 0 to
   turn it off. Camera files say how much was corrected (QuickTime metadata
   `com.mikerosoft.record-it.camera-delay`, in seconds), so an editor that
   reads it, like Tandem, doesn't correct them twice
@@ -160,7 +166,7 @@ recording.
 
 ## Output folders
 
-The Project menu lists directories under `~/dev/convex/convex-videos`, newest
+The Project menu lists directories under `~/Developer/content-creation/recordings`, newest
 first.
 Click **New…** beside the menu, enter a project name, and choose **Create Project**.
 Record It creates the project and its `source` folder in that default location,
@@ -168,7 +174,7 @@ then selects it for recording. Existing file and folder names cannot be reused.
 Choosing a project saves into its `source` folder, creating it when needed:
 
 ```text
-~/dev/convex/convex-videos/ai-tips/source/
+~/Developer/content-creation/recordings/ai-tips/source/
 ```
 
 Choosing **No Project** saves into:
@@ -279,8 +285,8 @@ For an isolated app build, set `RECORD_IT_APP_DIR` to another `.app` path.
 and `RECORD_IT_CODESIGN_IDENTITY=-` forces ad-hoc signing. Leave the signing
 identity unset to use the first available Apple Development certificate.
 
-## More tools
+## Upstream credit
 
-You can find my other tools at [mikerosoft.app](https://mikerosoft.app).
+Originally created by [Mike Cann](https://github.com/mikecann/record-it). Find his other tools at [mikerosoft.app](https://mikerosoft.app).
 
 MIT licensed.

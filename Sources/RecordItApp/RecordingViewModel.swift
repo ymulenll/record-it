@@ -4,7 +4,7 @@ import CoreMedia
 import Foundation
 
 func defaultProjectsRoot(homeDirectory: URL = FileManager.default.homeDirectoryForCurrentUser) -> URL {
-    homeDirectory.appendingPathComponent("dev/convex/convex-videos", isDirectory: true)
+    homeDirectory.appendingPathComponent("Developer/content-creation/recordings", isDirectory: true)
 }
 
 func recordingPrerequisitesAreAvailable(

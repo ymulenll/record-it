@@ -959,7 +959,7 @@ private struct EncoderSettingsView: View {
                 }
                 GridRow {
                     Color.clear.gridCellUnsizedAxes([.horizontal, .vertical])
-                    Text("A webcam's picture runs behind its microphone, so camera recordings place each frame this much earlier to keep lips in time with the voice. 80 ms suits the Kiyo with the Yeti; 0 turns it off.")
+                    Text("A webcam's picture runs behind its microphone, so camera recordings place each frame this much earlier to keep lips in time with the voice. Start at 0 and use a clap test to calibrate your camera and microphone.")
                         .font(.caption)
                         .foregroundStyle(.secondary)
                         .fixedSize(horizontal: false, vertical: true)
